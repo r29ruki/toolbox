@@ -1,6 +1,7 @@
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
 
 <?php 
+//楽曲ページ用機材リストFormat
 global $wpdb;
 $song_name = get_the_title();  // 現在の投稿のタイトルを取得
 //echo "song_name=".$song_name."=>".bin2hex($song_name)."<br>";

@@ -1,6 +1,7 @@
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
 
 <?php 
+//機材個別ページ用使用楽曲リストFormat
 global $wpdb;
 $custom_fields = get_post_custom();  // 指定した投稿のすべてのカスタムフィールド情報を取得
 $label_tmp = $custom_fields['label']; // 'label' というキーを持つカスタムフィールドの値を取得
@@ -72,10 +73,14 @@ else{
                         //echo "key=".$key."=>".bin2hex($key)."<br>";
                         $song_guid = get_guid_by_title($key);
                         if(isset($song_guid)){
-                            //ジェン通は楽曲ページは新規ウィンドウで開く
-                            printf('<tr><td><a href="%s" rel="noopener" target="_blank">%s</a></td><td>',$song_guid,$key);
-                            //TOOLBOXは楽曲ページは同じウィンドウで開く
-                            //printf('<tr><td><a href="%s">%s</a></td><td>',$song_guid,$key);
+                            if(get_bloginfo()=="TOOLBOX"){
+                                //TOOLBOXは楽曲ページは同じウィンドウで開く
+                                printf('<tr><td><a href="%s">%s</a></td><td>',$song_guid,$key);
+                            }
+                            else{
+                                //ジェン通は楽曲ページは新規ウィンドウで開く
+                                printf('<tr><td><a href="%s" rel="noopener" target="_blank">%s</a></td><td>',$song_guid,$key);
+                            }
                         }
                         else{
                             echo "<tr><td>".$key."</td><td>";

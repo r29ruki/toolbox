@@ -1,21 +1,7 @@
 <?php
+//セットリスト用
 //SQLで楽器一覧を取得しておく
-global $wpdb;
-$post_id = get_the_ID();
-$get_meta = $wpdb->get_results(
-$wpdb->prepare( "SELECT * FROM wp_setlist WHERE post_id = %d", $post_id));
-$get_meta = isset($get_meta[0]) ? $get_meta[0] : null;
-$show_name = isset($get_meta->show_name) ? $get_meta->show_name : null;
-$show_date = isset($get_meta->show_date) ? $get_meta->show_date : null;
-$show_venue = isset($get_meta->show_venue) ? $get_meta->show_venue : null;
-if(isset($show_venue) && isset($show_date)){
-?>
-<p>
-    Venue：<?php echo $show_venue; ?><br>
-    Date：<?php echo $show_date; ?>
-</p>
-<?
-}
+global $wpdb; 
 //DB一つの場合
 //$query = "SELECT p.ID, p.post_title, p.guid, p.post_status, m.meta_key, m.meta_value FROM wp_posts p INNER JOIN wp_postmeta m ON p.ID = m.post_id WHERE p.post_status = 'publish' AND m.meta_key = 'label'";
 //DBが二つの場合
