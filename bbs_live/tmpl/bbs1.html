@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="format-detection" content="telephone=no">
+<title> </title>
+
+<link href="/wp-content/themes/toolbox/css/style.css" rel="stylesheet">
+<link href="/wp-content/themes/toolbox/css/jquery.bxslider.css" rel="stylesheet">
+</head>
+
+<body>
+<div id="loader"><div><img src="/wp-content/themes/toolbox/img/loader.gif" alt="now loading..."></div></div>
+
+<header>
+<div class="inner cf">
+<h1>TOOLBOX | Mr.Children 使用楽器・機材のデータベース。非公式ファンサイト。</h1>
+<p><a href="https://mrchildren.tools"><strong>TOOLBOX</strong>Mr.Children's Music Equipment Detabase</a></p>
+
+<label class="toggle" for="open">
+<span class="navBtn">
+<span></span>
+<span></span>
+<span></span>
+</span>
+</label>
+<input id="open" type="checkbox">
+<div id="navBg"></div>
+
+<nav>
+<ul class="cf">
+<li><a href="https://mrchildren.tools">HOME<span>ホーム</span></a></li>
+<li><a href="https://mrchildren.tools/equipment/">EQUIPMENT<span>楽器・機材</span></a>
+<ul>
+<li><a href="https://mrchildren.tools/archive/sakurai/">SAKURAI's</a></li>
+<li><a href="https://mrchildren.tools/archive/tahara/">TAHARA's</a></li>
+<li><a href="https://mrchildren.tools/archive/nakagawa/">NAKAGAWA's</a></li>
+<li><a href="https://jen.mrchildren.tools/" target="_blank" rel="noopener noreferrer">JEN's</a></li>
+<li><a href="https://mrchildren.tools/archive/kouguchi/">KOUGUCHI's</a></li>
+</ul>
+</li>
+<li><a href="#">DATA<span>その他データ</span></a>
+<ul>
+<li><a href="https://mrchildren.tools/live/">LIVE</a></li>
+<li><a href="https://mrchildren.tools/archive/media/">MEDIA</a></li>
+<li><a href="https://mrchildren.tools/archive/songs/">SONGS</a></li>
+</ul>
+</li>
+<li><a href="#">COMMUNITY<span>交流</span></a>
+<ul>
+<li><a href="/bbs_live/yybbs.cgi">LIVE BOARD</a></li>
+<li><a href="https://mrchildren.tools/archive/blog/">BLOG</a></li>
+<li><a href="https://twilog.org/TOOLBOX_M" target="_blank" rel="noopener noreferrer">Twilog</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+</header>
+
+<section class="wrapper">
+<h2>COMMUNITY</h2>
+
+<div class="inner">
+<ul id="pankuzu">
+<li><a href="https://mrchildren.tools">TOOLBOX HOME</a></li>
+<li>LIVE BOARD</li>
+</ul>
+
+<div id="bbs">
+<h3>LIVE BOARD</h3>
+
+<div id="contents">
+<div id="main-in">
+<form action="!regist_cgi!" method="post">
+<input type="hidden" name="mode" value="regist" />
+<input type="hidden" name="reno" value="!reno!" />
+<div id="reg-area">
+<div id="reg-box">
+<ul class="disc">
+<li>投稿時に「暗証キー」を入力しておくと、その暗証キーを使って自分の記事を修正・削除することができます。</li>
+<li>投稿する上で、HTMLタグの使用はできません。</li>
+<li><a href="!admin_cgi!" target="_blank">管理者</a>が著しく不適当と判断する記事や、他人を誹謗中傷する記事は予告なく削除することがあります。</li>
+</ul>
+
+<table id="reg-tbl" class="table_A">
+<tr>
+<th>名前<span>必須</span></th>
+<td><input type="text" name="name" class="reg-name" value="!name!" required></td>
+</tr>
+<tr>
+<th>E-mail<span>必須</span></th>
+<td><input type="text" name="email" class="reg-name" value="!email!" required></td>
+</tr>
+<tr>
+<th>件名</th>
+<td><input type="text" name="sub" class="reg-url" value="!sub!"></td>
+</tr>
+<tr>
+<th>本文<span>必須</span></th>
+<td><textarea class="reg-com" name="comment" required></textarea></td>
+</tr>
+<tr>
+<th>HP</th>
+<td><input type="text" class="reg-url" name="url" value="!url!" /></td>
+</tr>
+<tr>
+<th>暗証キー</th>
+<td class="small">
+<input type="password" name="pwd" class="reg-num" maxlength="8" /><small>（英数字8文字以内）</small>
+</td>
+</tr>
+<!-- captcha_begin -->
+<tr>
+<th>画像認証<span>必須</span></th>
+<td class="small">
+<input type="text" name="captcha" class="reg-num" style="ime-mode:inactive" maxlength="8" /><small>（右画像の数字入力） <img src="!captcha_cgi!?!str_crypt!" class="capt" alt="画像認証" /></small>
+<input type="hidden" name="str_crypt" value="!str_crypt!" />
+</td>
+</tr>
+<!-- captcha_end -->
+<tr>
+<th>文字色</th>
+<td>!color!</td>
+</tr>
+</table>
+<p align="center"><input type="submit" class="reg-btn" value="投稿" /></p>
+</div>
+</div>
+</form>
+
+<div class="ta-c">
+
+<!-- loop -->
+<div class="art post">
+<strong>!art-ttl!</strong>
+<p>!comment!<br class="clear" /></p>
+<div class="art-info cf">
+<p class="fl">記事No.!num! !icon:user.png! <b>!name!</b> !icon:time.png! !date! !url!</p>
+<p class="fr">[<a href="#" onclick="window.open('!bbs_cgi!?res:!num!','_self')">このコメントに返信</a>]</p>
+</div>
+<!-- res -->
+</div>
+<!-- /loop -->
+
+<p class="pgtop">!page_btn!</p>
+
+<div class="alignC">
+<form action="!regist_cgi!" method="post">
+処理
+<select name="mode">
+<option value="log_edit">修正</option>
+<option value="log_dele">削除</option>
+</select>
+記事No <input type="text" name="no" size="3" style="ime-mode:inactive" />
+暗証キー <input type="password" name="pwd" size="4" maxlength="8" />
+<input type="submit" value="送信" />
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<div class="pagetop"><a href="#"><img src="/wp-content/themes/toolbox/img/pagetop.png" alt="ページトップへ"></a></div>
+
+<footer>
+<ul class="cf">
+<li><a href="https://mrchildren.tools">HOME</a></li>
+<li><a href="https://mrchildren.tools/equipment/">EQUIPMENT</a></li>
+<li><a href="https://mrchildren.tools/live/">LIVE</a></li>
+<li><a href="https://mrchildren.tools/archive/media/">MEDIA</a></li>
+<li><a href="https://mrchildren.tools/archive/songs/">SONGS</a></li>
+<li><a href="https://mrchildren.tools/archive/blog/">BLOG</a></li>
+<li><a href="/bbs_live/yybbs.cgi">LIVE BOARD</a></li>
+</ul>
+
+<p>&copy; TOOLBOX</p>
+</footer>
+
+<script src="/wp-content/themes/toolbox/js/jquery-1.11.1.min.js"></script>
+<script src="/wp-content/themes/toolbox/js/script.js"></script>
+<script src="/wp-content/themes/toolbox/js/ga.js"></script>
+</body>
+</html>

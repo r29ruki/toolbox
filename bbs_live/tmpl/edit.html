@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="format-detection" content="telephone=no">
+<title> </title>
+
+<link href="/wp-content/themes/toolbox/css/style.css" rel="stylesheet">
+<link href="/wp-content/themes/toolbox/css/jquery.bxslider.css" rel="stylesheet">
+</head>
+
+<body>
+<div id="loader"><div><img src="/wp-content/themes/toolbox/img/loader.gif" alt="now loading..."></div></div>
+
+<header>
+<div class="inner cf">
+<h1>TOOLBOX | Mr.Children 使用楽器・機材のデータベース。非公式ファンサイト。</h1>
+<p><a href="https://mrchildren.tools"><strong>TOOLBOX</strong>Mr.Children's Music Equipment Detabase</a></p>
+
+<label class="toggle" for="open">
+<span class="navBtn">
+<span></span>
+<span></span>
+<span></span>
+</span>
+</label>
+<input id="open" type="checkbox">
+<div id="navBg"></div>
+
+<nav>
+<ul class="cf">
+<li><a href="https://mrchildren.tools">HOME<span>ホーム</span></a></li>
+<li><a href="https://mrchildren.tools/equipment/">EQUIPMENT<span>楽器・機材</span></a>
+<ul>
+<li><a href="https://mrchildren.tools/archive/sakurai/">SAKURAI's</a></li>
+<li><a href="https://mrchildren.tools/archive/tahara/">TAHARA's</a></li>
+<li><a href="https://mrchildren.tools/archive/nakagawa/">NAKAGAWA's</a></li>
+<li><a href="https://jen.mrchildren.tools/" target="_blank" rel="noopener noreferrer">JEN's</a></li>
+<li><a href="https://mrchildren.tools/archive/kouguchi/">KOUGUCHI's</a></li>
+</ul>
+</li>
+<li><a href="#">DATA<span>その他データ</span></a>
+<ul>
+<li><a href="https://mrchildren.tools/live/">LIVE</a></li>
+<li><a href="https://mrchildren.tools/archive/media/">MEDIA</a></li>
+<li><a href="https://mrchildren.tools/archive/songs/">SONGS</a></li>
+</ul>
+</li>
+<li><a href="#">COMMUNITY<span>交流</span></a>
+<ul>
+<li><a href="/bbs_live/yybbs.cgi">LIVE BOARD</a></li>
+<li><a href="https://mrchildren.tools/archive/blog/">BLOG</a></li>
+<li><a href="https://twilog.org/TOOLBOX_M" target="_blank" rel="noopener noreferrer">Twilog</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+</header>
+
+<section class="wrapper">
+<h2>COMMUNITY</h2>
+
+<div class="inner">
+<ul id="pankuzu">
+<li><a href="https://mrchildren.tools">TOOLBOX HOME</a></li>
+<li>BBS</li>
+</ul>
+
+<div id="bbs">
+<h3>LIVE BOARD</h3>
+
+<div id="main-in">
+
+<form action="!regist_cgi!" method="post">
+<input type="hidden" name="mode" value="log_edit" />
+<input type="hidden" name="job" value="edit" />
+<input type="hidden" name="no" value="!num!" />
+<input type="hidden" name="pwd" value="!pwd!" />
+<input type="hidden" name="bbs" value="!bbs!" />
+<div id="reg-area">
+<p class="alignC">修正する箇所のみ編集し、送信ボタンを押してください。</p>
+
+<div id="reg-box">
+<table id="reg-tbl" class="table_A">
+<tr>
+<th>おなまえ</th>
+<td><input type="text" name="name" class="reg-name" value="!name!" /></td>
+</tr>
+<tr>
+<th>Ｅメール</th>
+<td><input type="text" name="email" class="reg-name" value="!email!" /></td>
+</tr>
+<tr>
+<th>タイトル</th>
+<td><input type="text" name="sub" class="reg-url" value="!sub!"></td>
+</tr>
+<tr>
+<th>コメント</th>
+<td><textarea class="reg-com" name="comment">!comment!</textarea></td>
+</tr>
+<tr>
+<th>参照先</th>
+<td><input type="text" class="reg-url" name="url" value="!url!" /></td>
+</tr>
+<tr>
+<th>文字色</th>
+<td>!color!</td>
+</tr>
+</table>
+
+<p align="center"><input type="button" class="color green button" value="修正せず戻る" onclick="window.open('!bbs_cgi!?bbs=!bbs!','_self')" />　<input type="submit" class="reg-btn submit" value="投稿する" /></p>
+</div>
+</div>
+</form>
+
+</div>
+</div>
+</div>
+</section>
+
+<div class="pagetop"><a href="#"><img src="/wp-content/themes/toolbox/img/pagetop.png" alt="ページトップへ"></a></div>
+
+<footer>
+<ul class="cf">
+<li><a href="https://mrchildren.tools">HOME</a></li>
+<li><a href="https://mrchildren.tools/equipment/">EQUIPMENT</a></li>
+<li><a href="https://mrchildren.tools/live/">LIVE</a></li>
+<li><a href="https://mrchildren.tools/archive/media/">MEDIA</a></li>
+<li><a href="https://mrchildren.tools/archive/songs/">SONGS</a></li>
+<li><a href="https://mrchildren.tools/archive/blog/">BLOG</a></li>
+<li><a href="/bbs_live/yybbs.cgi">LIVE BOARD</a></li>
+</ul>
+
+<p>&copy; TOOLBOX</p>
+</footer>
+
+<script src="/wp-content/themes/toolbox/js/jquery-1.11.1.min.js"></script>
+<script src="/wp-content/themes/toolbox/js/script.js"></script>
+<script src="/wp-content/themes/toolbox/js/ga.js"></script>
+</body>
+</html>
