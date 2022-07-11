@@ -1,4 +1,5 @@
 <?php
+//ジェン通メインセット履歴用Format
 $custom_fields = get_post_custom();
 ?>
 
