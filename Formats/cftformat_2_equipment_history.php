@@ -1,4 +1,5 @@
 <?php 
+//TOOLBOX楽器使用履歴Format
 global $wpdb;
 $post_title = get_the_title();
 //echo $post_title."<br>";
@@ -65,7 +66,7 @@ $eqs = array_keys($eqhistory_arr);
     for($y=1994;$y<=$cur_year;$y++){
       if(isset($eqhistory_arr[$value][$i])){
         if($eqhistory_arr[$value][$i]==$y){
-          echo "<td color=red ><b>●</b></td>";
+          echo "<td class='data' ><b>●</b></td>";
           $i++;
         }
         else {
