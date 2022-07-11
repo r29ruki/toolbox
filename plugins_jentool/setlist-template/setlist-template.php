@@ -4,7 +4,7 @@ Plugin Name: Setlist Template
 Plugin URI: http://www.example.com/plugin
 Description: セットリスト用HTMLのテンプレート for ジェン通
 Author: R.K
-Version: 1.1
+Version: 1.2
 Author URI: http://www.example.com
 */
 function set_template($custom_fields, $label, $guid, $m) {
@@ -40,7 +40,7 @@ function set_template($custom_fields, $label, $guid, $m) {
             <?php 
                     $song_guid = get_guid_by_title($my_custom_field[$m]);
                     if(isset($song_guid)){
-                        printf('<a href="%s">%s</a>',$song_guid,$my_custom_field[$m]);
+                        printf('<a href="%s" rel="noopener" target="_blank">%s</a>',$song_guid,$my_custom_field[$m]);
                     }
                     else{
                         echo $my_custom_field[$m];
@@ -75,7 +75,7 @@ function set_en_template($custom_fields, $label, $guid, $m, $en) {
                 <?php 
                 $song_guid = get_guid_by_title($my_custom_field[$m]);
                 if(isset($song_guid)){
-                    printf('<a href="%s">%s</a>',$song_guid,$my_custom_field[$m]);
+                    printf('<a href="%s" rel="noopener" target="_blank">%s</a>',$song_guid,$my_custom_field[$m]);
                 }
                 else{
                     echo $my_custom_field[$m];
