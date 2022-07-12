@@ -140,7 +140,7 @@ class CustomSetlistTable {
         //if ($post->ID != $post_id) printf("wrong post_id"); return;
         if ($post->ID != $post_id) return;
         
-        //キー情報、BPM情報のいずれかが入っていれば楽曲情報投稿として自動リンク追加。
+        //キー情報、BPM情報のいずれかが入っていれば楽曲情報投稿として自動リンク追加して処理終了
         if((post_custom('KEY') != "") || (post_custom('BPM') != "")){
             $autolink_table = "wp_seo_automated_link_building";
             $wplink_table = "wp_links";
@@ -222,7 +222,21 @@ class CustomSetlistTable {
                     //printf("<br><br>inserting post...<br><br>");
                 }
                 $wpdb->show_errors();
+                //wp_links側にレコードがある場合はDELETE
+                $get_del_id = $wpdb->get_var(
+                    $wpdb->prepare( "SELECT link_id FROM ". $wplink_table ." WHERE 
+                            link_url = %s OR link_name = %s", $permalink, $post_title)
+                );
+                if (isset($get_del_id)) {
+                    $wpdb->delete( $wplink_table, array('link_id' => $get_del_id));
+                    //デバッグ用
+                    //printf("<br><br>deleting post...<br><br>");
+                    //echo "<br>";
+                }
+                $wpdb->show_errors();
             }
+
+            return;
         }
         
         if(!isset($temp_show_name)&&!isset($temp_show_date)&&!isset($temp_show_venue)) return; //公演情報がすべて存在しない場合は処理終了
