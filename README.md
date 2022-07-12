@@ -1,4 +1,3 @@
-# TOOLBOX
 ## このリポジトリについて
 このリポジトリはMr.Children機材情報まとめサイト [TOOLBOX](https://mrchildren.tools) および
 
