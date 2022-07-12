@@ -4,7 +4,7 @@ Plugin Name: Custom Setlist Table
 Plugin URI: 
 Description: カスタムフィールドの値をオリジナルのテーブル（DB）に保存する
 Author: R.K
-Version: 2.1
+Version: 2.2
 Author URI: 
 */
 class CustomSetlistTable {
@@ -173,7 +173,6 @@ class CustomSetlistTable {
                 } else {
                     $wpdb->insert( $wplink_table, $keyword_arr);
                     //デバッグ用
-                    //if ($i == 0) print_r($_POST);
                     //printf("<br><br>inserting post...<br><br>");
                 }
                 $wpdb->show_errors();
