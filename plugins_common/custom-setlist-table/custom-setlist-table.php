@@ -4,7 +4,7 @@ Plugin Name: Custom Setlist Table
 Plugin URI: 
 Description: カスタムフィールドの値をオリジナルのテーブル（DB）に保存する
 Author: R.K
-Version: 2.1
+Version: 2.2
 Author URI: 
 */
 class CustomSetlistTable {
@@ -140,42 +140,89 @@ class CustomSetlistTable {
         //if ($post->ID != $post_id) printf("wrong post_id"); return;
         if ($post->ID != $post_id) return;
         
-        //キー情報、BPM情報のいずれかが入っていれば楽曲情報投稿として自動リンク追加。adminフラグが入っている投稿を除く。
-        if(((post_custom('KEY') != "") || (post_custom('BPM') != "")) && (post_custom('user') != "admin")){
+        //キー情報、BPM情報のいずれかが入っていれば楽曲情報投稿として自動リンク追加。
+        if((post_custom('KEY') != "") || (post_custom('BPM') != "")){
             $autolink_table = "wp_seo_automated_link_building";
+            $wplink_table = "wp_links";
             $post_title = get_the_title();
             $permalink = get_permalink();
-            $keywords = '["'.$post_title.'"]';
-            $keyword_arr = array(
-            'title' => $post_title,
-            'keywords' => $keywords,
-            'url' => $permalink,
-            'num' => 1
-            );
             //printf("insert keywords and permalink<br>");
             //print_r($keyword_arr);
             
-            $get_id = $wpdb->get_var(
-            $wpdb->prepare( "SELECT id FROM
-                    ". $autolink_table ." WHERE 
-                    url = %s OR title = %s", $permalink, $post_title)
-            );
-            //print_r($song_name[$i]);
-            //print_r($get_id);
-            //レコードがなかったら新規追加あったら更新
-            if (isset($get_id)) {
-                $wpdb->update( $autolink_table, $keyword_arr, array('id' => $get_id));
-                //デバッグ用
-                //if ($i == 0) print_r($_POST);
-                //printf("<br><br>updating post...<br><br>");
-                //echo "<br>";
-            } else {
-                $wpdb->insert( $autolink_table, $keyword_arr);
-                //デバッグ用
-                //if ($i == 0) print_r($_POST);
-                //printf("<br><br>inserting post...<br><br>");
+            if(post_custom('user') == "admin"){
+                //adminフラグが入っている投稿の場合、wp_linksにリンク情報を追加
+                $get_id = $wpdb->get_var(
+                    $wpdb->prepare( "SELECT link_id FROM ". $wplink_table ." WHERE 
+                            link_url = %s OR link_name = %s", $permalink, $post_title)
+                );
+
+                $keywords = ''.$post_title.'　';
+                $keyword_arr = array(
+                'link_name' => $keywords,
+                'link_url' => $permalink,
+                'link_visible' => "Y",
+                'link_owner' => 1
+                );
+
+                //レコードがなかったら新規追加あったら更新
+                if (isset($get_id)) {
+                    $wpdb->update( $wplink_table, $keyword_arr, array('link_id' => $get_id));
+                    //デバッグ用
+                    //printf("<br><br>updating post...<br><br>");
+                    //echo "<br>";
+                } else {
+                    $wpdb->insert( $wplink_table, $keyword_arr);
+                    //デバッグ用
+                    //printf("<br><br>inserting post...<br><br>");
+                }
+                $wpdb->show_errors();
+
+                //automated_link_building側にレコードがある場合はDELETE
+                $get_del_id = $wpdb->get_var(
+                    $wpdb->prepare( "SELECT id FROM
+                        ". $autolink_table ." WHERE 
+                        url = %s OR title = %s", $permalink, $post_title)
+                );
+                if (isset($get_del_id)) {
+                    $wpdb->delete( $autolink_table, array('id' => $get_del_id));
+                    //デバッグ用
+                    //printf("<br><br>deleting post...<br><br>");
+                    //echo "<br>";
+                }
+                $wpdb->show_errors();
             }
-            $wpdb->show_errors();
+            else{
+                $get_id = $wpdb->get_var(
+                    $wpdb->prepare( "SELECT id FROM
+                        ". $autolink_table ." WHERE 
+                        url = %s OR title = %s", $permalink, $post_title)
+                );
+                //print_r($song_name[$i]);
+                //print_r($get_id);
+
+                $keywords = '["'.$post_title.'"]';
+                $keyword_arr = array(
+                'title' => $post_title,
+                'keywords' => $keywords,
+                'url' => $permalink,
+                'num' => 1
+                );
+
+                //レコードがなかったら新規追加あったら更新
+                if (isset($get_id)) {
+                    $wpdb->update( $autolink_table, $keyword_arr, array('id' => $get_id));
+                    //デバッグ用
+                    //if ($i == 0) print_r($_POST);
+                    //printf("<br><br>updating post...<br><br>");
+                    //echo "<br>";
+                } else {
+                    $wpdb->insert( $autolink_table, $keyword_arr);
+                    //デバッグ用
+                    //if ($i == 0) print_r($_POST);
+                    //printf("<br><br>inserting post...<br><br>");
+                }
+                $wpdb->show_errors();
+            }
         }
         
         if(!isset($temp_show_name)&&!isset($temp_show_date)&&!isset($temp_show_venue)) return; //公演情報がすべて存在しない場合は処理終了
