@@ -9,7 +9,7 @@ bbs_live ... 掲示板ソース
 
 Formats ... セットリストや使用機材リスト等で使用するHTMLテンプレート類
 
-manual ... [管理者用マニュアル] (https://mrchildren.tools/manual/)
+manual ... [管理者用マニュアル](https://mrchildren.tools/manual/)
 
 plugins ... 自作プラグイン
 
